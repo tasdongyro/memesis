@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #f3efe6;
+  --paper-2: #e9e3d6;
+  --ink: #141311;
+  --ink-2: #4a463f;
+  --mute: #8a847a;
+  --lime: #c9ff3a;
+  --orange: #ff5a1f;
+  --frog: #3f9a46;
+  --sky: #2f6fed;
+  --line: #141311;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+body { -webkit-font-smoothing: antialiased; }
+.page { position: relative; overflow: hidden; background: var(--paper);
+  background-image: radial-gradient(rgba(20,19,17,.10) 1px, transparent 1.2px); background-size: 14px 14px; }
+.display { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.03em; line-height: .95; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.kw { color: var(--ink); background: var(--lime); padding: 0 .25em; border-radius: 3px; font-weight: 600; }
+.tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; padding: 3px 8px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; }
+.tag.orange { background: var(--orange); color: #fff; border-color: var(--ink); }
+.tag.lime { background: var(--lime); }
+.tag.frog { background: var(--frog); color: #fff; }
+
+/* stickers: colour image, thick paper border, ink outline, hard shadow */
+.sticker { position: absolute; display: block; }
+.sticker img { display: block; object-fit: cover; border: 5px solid #fff; outline: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--ink); filter: contrast(1.12) saturate(1.08); background: #fff; }
+.sticker.r-6 { transform: rotate(-6deg); } .sticker.r-3 { transform: rotate(-3deg); }
+.sticker.r3 { transform: rotate(3deg); } .sticker.r6 { transform: rotate(6deg); } .sticker.r9 { transform: rotate(9deg); }
+
+/* window chrome for code and terminal */
+.win { background: #fff; border: 2px solid var(--ink); border-radius: 10px; box-shadow: 10px 10px 0 var(--ink); overflow: hidden; }
+.win .bar { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 2px solid var(--ink); background: var(--paper-2);
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-2); }
+.win .bar i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-block; }
+.win .bar i.a { background: var(--orange); } .win .bar i.b { background: #ffd23f; } .win .bar i.c { background: var(--lime); }
+.win .bar span { margin-left: 8px; }
+.win.dark { background: #15140f; color: #efeadb; }
+.win.dark .bar { background: #24221b; color: #b9b3a3; border-color: var(--ink); }
+pre.meme, pre.term { margin: 0; padding: 16px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 14.5px; line-height: 1.5; white-space: pre; }
+pre.term { font-size: 13.5px; }
+/* syntax colours (filled in by hl.js) */
+.c-kw { color: #1a5fd0; font-weight: 600; }
+.c-trust { color: #d6420f; font-weight: 600; }
+.c-ppl { color: #8a2be2; font-weight: 600; }
+.c-data { color: #2a7a34; font-weight: 600; }
+.c-str { color: #8a4b08; }
+.c-cmt { color: #9a948a; font-style: italic; }
+.c-num { color: #c01f6f; }
+.c-fn { color: #15140f; font-weight: 500; }
+.c-yolo { background: var(--orange); color: #fff; padding: 0 3px; border-radius: 3px; font-weight: 700; }
+.c-sus { background: #ffd23f; padding: 0 3px; border-radius: 3px; font-weight: 700; }
+/* terminal colours */
+.t-dim { color: #8b8676; } .t-ok { color: var(--lime); } .t-sus { color: #ffb03a; font-weight: 600; } .t-cmd { color: #fff; font-weight: 600; }
+.t-err { color: #ff7a52; }
+
+h1, h2, h3, p { margin: 0; }
+.card { background: #fff; border: 2px solid var(--ink); border-radius: 12px; box-shadow: 6px 6px 0 var(--ink); }
+.arrow { font-family: 'IBM Plex Mono', monospace; font-weight: 600; }

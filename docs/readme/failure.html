@@ -1,0 +1,62 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>failure is a feeling</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1100px; height: 590px; }
+  .page { width: 1100px; height: 590px; padding: 40px 44px; }
+  h1 { font-size: 40px; margin-bottom: 8px; }
+  .sub { font-size: 15px; color: var(--ink-2); max-width: 760px; line-height: 1.4; margin-bottom: 28px; }
+  .cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 26px; }
+  .win pre.meme { font-size: 14px; }
+  .side { display: flex; flex-direction: column; gap: 18px; }
+  .mini { position: relative; padding: 14px 16px 14px 130px; min-height: 112px; }
+  .mini .pic { left: 14px; top: 14px; width: 98px; }
+  .mini .pic img { width: 98px; height: 84px; border-width: 4px; box-shadow: 4px 4px 0 var(--ink); border-radius: 8px; }
+  .mini b { font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; display: block; margin-bottom: 4px; }
+  .mini p { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+  .vc { left: 428px; top: 452px; width: 190px; }
+  .vc img { width: 190px; height: 112px; object-position: 72% 50%; }
+</style></head>
+<body><div class="page">
+  <h1 class="display">failure is a feeling</h1>
+  <p class="sub">Errors are values an agent can look at. <span class="kw">chad</span> tries, <span class="kw">virgin</span> catches, <span class="kw">F</span> pays respects. The error is in <code>L</code>, because you take the L.</p>
+
+  <div class="cols">
+    <div class="win" style="position:relative">
+      <div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>deploy.meme</span></div>
+<pre class="meme">chad {
+  such build = yolo shell("make build")
+  based build.code == 0, "build failed"
+  yolo shell("make deploy")
+  shipped = based
+  grind until healthy(url) max 5 { touchgrass 1s }
+} virgin {
+  doge "deploy failed:", L.message
+  tfw shipped { yolo shell("make rollback") }
+  feelsbad "deploy failed: {L.message}"
+} F {
+  thisisfine { yolo shell("make cleanup") }
+}</pre>
+    </div>
+
+    <div class="side">
+      <div class="mini card">
+        <span class="sticker pic r-3"><img src="../img/copium.jpg" style="object-position:80% 50%" alt=""></span>
+        <b>x copium y</b>
+        <p>Use y when x fails or is loss. <code>fetch(url) copium ""</code>, <code>apu "ok?" copium "no"</code>, <code>r.key copium 0</code>. The one-line try.</p>
+      </div>
+      <div class="mini card">
+        <span class="sticker pic r3"><img src="../img/thisisfine.jpg" style="object-position:20% 50%" alt=""></span>
+        <b>thisisfine { }</b>
+        <p>Errors inside are logged and ignored. For cleanup and best-effort steps, never for the main path.</p>
+      </div>
+      <div class="mini card">
+        <span class="sticker pic r-3"><img src="../img/pressf.jpg" style="object-position:50% 50%" alt=""></span>
+        <b>grind ... max N</b>
+        <p>Every loop has a cap. Hit it and you get a GrindCap error, not an agent that spins until the budget is gone.</p>
+      </div>
+    </div>
+  </div>
+<span class="sticker vc r6"><img src="../img/virginchad.jpg" alt=""></span>
+<script src="hl.js"></script>
+</div></body></html>

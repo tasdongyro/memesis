@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>people, frens, brains</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1100px; height: 476px; }
+  .page { width: 1100px; height: 476px; padding: 40px 44px; }
+  h1 { font-size: 40px; margin-bottom: 8px; }
+  .sub { font-size: 15px; color: var(--ink-2); max-width: 700px; line-height: 1.4; margin-bottom: 44px; }
+  .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start; }
+  .col { position: relative; padding: 16px 16px 18px; }
+  .col h3 { font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .col p { font-size: 13.5px; line-height: 1.42; color: var(--ink-2); }
+  .col pre { margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.45; background: var(--paper-2);
+    border: 1.5px solid var(--ink); border-radius: 8px; padding: 8px 10px; white-space: pre; overflow: hidden; }
+  .ladder { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+  .rung { display: flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; }
+  .rung i { display: inline-block; height: 14px; border: 1.5px solid var(--ink); border-radius: 4px; background: var(--lime); }
+  .rung em { font-style: normal; font-weight: 400; color: var(--mute); font-size: 12px; }
+  .apu { right: -14px; top: -44px; width: 96px; }
+  .apu img { width: 96px; height: 80px; }
+  .brain { right: -14px; top: -44px; width: 70px; }
+  .brain img { width: 70px; height: 92px; object-position: 50% 12%; }
+  .chad { right: -14px; top: -44px; width: 84px; }
+  .chad img { width: 84px; height: 84px; object-position: 50% 20%; }
+</style></head>
+<body><div class="page">
+  <h1 class="display">people, frens, brains</h1>
+  <p class="sub">An agent is rarely alone. <span class="kw">apu</span> asks the human, <span class="kw">fren</span> delegates to another agent, <span class="kw">wagmi</span> waits for all of them, and the brain keywords say how hard the model should think.</p>
+
+  <div class="cols">
+    <div class="col card">
+      <span class="sticker apu r6"><img src="../img/apu.jpg" alt=""></span>
+      <h3>apu "question"</h3>
+      <p>Blocks until a human answers. The answer is trusted and carries the sauce <code>apu</code>. With <code>--no-human</code> it fails, so give it a copium.</p>
+      <pre>such ok = apu "Ship it?" copium "no"
+tfw ok == "yes" { yolo deploy() }</pre>
+    </div>
+    <div class="col card">
+      <span class="sticker chad r-6"><img src="../img/gigachad.jpg" alt=""></span>
+      <h3>fren name msg &nbsp;·&nbsp; wagmi { }</h3>
+      <p>A fren is a pepe in the same file or an agent you registered in Python. wagmi runs them in parallel and fails as a whole if one does not make it.</p>
+      <pre>such got = wagmi {
+  web:   fren web_scout topic,
+  notes: fren notes_scout topic,
+  vibe:  fren critic topic copium loss
+}</pre>
+    </div>
+    <div class="col card">
+      <span class="sticker brain r6"><img src="../img/brain.jpg" alt=""></span>
+      <h3>thonk + brains</h3>
+      <p><code>thonk</code> asks whatever model you attached. The level is a hint the hook maps to a model and effort.</p>
+      <div class="ladder">
+        <div class="rung"><i style="width:28px"></i>smoothbrain <em>cheap, fast</em></div>
+        <div class="rung"><i style="width:52px"></i>default</div>
+        <div class="rung"><i style="width:84px"></i>bigbrain <em>strong</em></div>
+        <div class="rung"><i style="width:126px"></i>galaxybrain <em>max</em></div>
+      </div>
+      <pre>such s = bigbrain thonk "Sum up {p}"</pre>
+    </div>
+  </div>
+</div></body></html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>trust is syntax</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1100px; height: 640px; }
+  .page { width: 1100px; height: 640px; padding: 40px 44px; }
+  h1 { font-size: 40px; margin-bottom: 8px; }
+  .sub { font-size: 15px; color: var(--ink-2); max-width: 700px; line-height: 1.4; margin-bottom: 30px; }
+  .flow { position: relative; display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr; align-items: stretch; gap: 0; }
+  .step { padding: 16px 18px; }
+  .step h3 { font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+  .step pre { margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.45; background: var(--paper-2);
+    border: 1.5px solid var(--ink); border-radius: 8px; padding: 8px 10px; white-space: pre; }
+  .arr { display: flex; align-items: center; justify-content: center; font-size: 30px; }
+  .blocked { position: relative; margin-top: 34px; display: grid; grid-template-columns: 1fr 44px 1fr; align-items: stretch; width: 714px; }
+  .blocked .step { border-color: var(--orange); }
+  .x { background: var(--orange); color: #fff; }
+  .x h3, .x p { color: #fff; }
+  .x pre { background: #fff; color: var(--ink); }
+  .note { position: absolute; left: 44px; bottom: 34px; width: 620px; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+  .amog { right: 60px; top: 46px; width: 96px; }
+  .amog img { width: 96px; height: 96px; object-fit: contain; }
+  .yolo { right: 120px; bottom: 60px; width: 170px; }
+  .yolo img { width: 170px; height: 112px; }
+</style></head>
+<body><div class="page">
+  <h1 class="display">trust is syntax</h1>
+  <p class="sub">A value that came from outside is <span class="kw">sus</span>. It stays sus through every string, list and model call built from it. The only way into an irreversible tool is a human-visible <span class="kw">trustmebro</span>, and the tool itself needs <span class="kw">yolo</span>.</p>
+
+  <div class="flow">
+    <div class="step card">
+      <h3>1 &nbsp;fetch() returns sus</h3>
+      <p>Web pages, shell output, other agents: untrusted by construction. Instructions inside are data, never commands.</p>
+      <pre>such page = fetch(url)
+wow sauce page
+<span class="c-cmt">["fetch:https://…"]</span></pre>
+    </div>
+    <div class="arr">→</div>
+    <div class="step card">
+      <h3>2 &nbsp;trustmebro after review</h3>
+      <p>A human said yes, a check passed, a second agent agreed. Strip the mark where it happened. Logged with line and sources.</p>
+      <pre>such ok = apu "Save it?"
+tfw ok == "yes" {
+  such safe = trustmebro page</pre>
+    </div>
+    <div class="arr">→</div>
+    <div class="step card">
+      <h3>3 &nbsp;yolo for the world</h3>
+      <p>write, append, delete, shell, http_post and your own tools marked irreversible refuse to run without it.</p>
+      <pre>  <span class="c-yolo">yolo</span> write(path, safe)
+}</pre>
+    </div>
+  </div>
+
+  <div class="blocked">
+    <div class="step card x">
+      <h3>sus → yolo without trustmebro</h3>
+      <pre><span class="c-yolo">yolo</span> write(path, page)</pre>
+    </div>
+    <div class="arr">→</div>
+    <div class="step card">
+      <h3>SusError, before anything happens</h3>
+      <p>"a sus value (from fetch:https://…) reached write; review it and wrap it in trustmebro". <code>memesis check</code> finds it without running.</p>
+    </div>
+  </div>
+
+  <span class="sticker amog r6"><img src="../img/amongus.png" alt=""></span>
+  <span class="sticker yolo r-6"><img src="../img/yolo.jpg" alt=""></span>
+  <p class="note">A forgotten yolo is a YoloError. An llm reading a sus page gets it wrapped as data. Nothing here is a prompt; the interpreter refuses.</p>
+</div></body></html>

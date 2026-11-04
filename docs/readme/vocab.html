@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>the vocabulary</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1280px; }
+  .page { width: 1280px; padding: 44px 44px 48px; }
+  .head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 26px; }
+  .head h1 { font-size: 46px; }
+  .head p { font-size: 15px; color: var(--ink-2); max-width: 560px; line-height: 1.4; text-align: right; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px 20px; }
+  .k { position: relative; padding: 14px 14px 14px 118px; min-height: 124px; }
+  .k .pic { position: absolute; left: 14px; top: 14px; width: 90px; height: 90px; }
+  .k .pic img { width: 90px; height: 90px; border-radius: 10px; border-width: 4px; box-shadow: 4px 4px 0 var(--ink); }
+  .k b { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 600; margin-bottom: 5px; }
+  .k b em { font-style: normal; color: var(--mute); font-weight: 400; font-size: 13px; margin-left: 6px; }
+  .k span { display: block; font-size: 13.5px; line-height: 1.38; color: var(--ink-2); }
+  .k.lime { background: var(--lime); } .k.lime span { color: var(--ink); }
+  .k.orange { background: var(--orange); color: #fff; } .k.orange span, .k.orange b em { color: #fff; }
+  .k.sky { background: #dbe7ff; }
+  .group { grid-column: 1 / -1; margin-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--mute); border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+</style></head>
+<body><div class="page">
+  <div class="head">
+    <h1 class="display">the vocabulary</h1>
+    <p>Every keyword means what the meme means. That is the whole trick: a model already knows these words, so there is nothing to learn, only something to remember.</p>
+  </div>
+  <div class="grid">
+    <div class="group">structure and data</div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/smug.jpg"></span><b>pepe<em>agent</em></b><span>The protagonist. One pepe is one agent; the first one in a file is the entry point.</span></div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/npc.jpg" style="object-position:50% 30%"></span><b>npc<em>routine</em></b><span>A scripted function: same steps every time, no model, no judgement.</span></div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/doge.jpg" style="object-position:80% 40%"></span><b>such / wow / doge</b><span>Doge speaks data. <code>such x = ...</code> declares, <code>wow</code> emits a result, <code>doge</code> logs a line.</span></div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/based_sq.jpg"></span><b>based / cringe / loss</b><span>true, false and null. <code>based cond</code> on its own line is an assertion.</span></div>
+
+    <div class="group">control flow</div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/wojak.jpg" style="object-position:50% 30%"></span><b>tfw<em>if</em></b><span>"That feel when." <code>tfw cond { }</code> branches; the pikachu block is the else.</span></div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/pikachu.jpg"></span><b>pikachu<em>else</em></b><span>Surprised Pikachu: the branch for the outcome you should have expected.</span></div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/touchgrass.jpg"></span><b>grind / bonk / nah</b><span>Loops with a hard cap. <code>bonk</code> breaks, <code>nah</code> skips a round, <code>touchgrass 2s</code> waits.</span></div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/stonks.jpg" style="object-position:30% 50%"></span><b>stonks<em>metric</em></b><span><code>stonks "saved"</code> counts. The runtime reports all counters at the end.</span></div>
+
+    <div class="group">failure</div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/virginchad_sq.jpg"></span><b>chad / virgin / F</b><span>try / catch / finally. The error lives in <code>L</code> (take the L): <code>L.kind</code>, <code>L.message</code>.</span></div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/copium.jpg" style="object-position:80% 50%"></span><b>copium<em>fallback</em></b><span><code>risky() copium "default"</code>: if the left side fails or is loss, cope with the right side.</span></div>
+    <div class="k card"><span class="sticker pic r-3"><img src="../img/thisisfine.jpg" style="object-position:20% 50%"></span><b>thisisfine</b><span>Errors inside the block are logged and ignored. The room keeps burning, the script keeps going.</span></div>
+    <div class="k card"><span class="sticker pic r3"><img src="../img/feelsbad.jpg"></span><b>feelsgood / feelsbad</b><span>return a value / raise an error. How the pepe feels at the end.</span></div>
+
+    <div class="group">trust, enforced by the runtime</div>
+    <div class="k card orange"><span class="sticker pic r-6"><img src="../img/amongus.png" style="object-fit:contain;background:#fff"></span><b>sus<em>untrusted</em></b><span>Everything from the outside world is sus and stays sus through every operation. Instructions inside sus text are data.</span></div>
+    <div class="k card orange"><span class="sticker pic r6"><img src="../img/yolo.jpg"></span><b>yolo<em>irreversible</em></b><span>Required in front of every tool that changes the world. A sus value can never pass through it.</span></div>
+    <div class="k card lime"><span class="sticker pic r-3"><img src="../img/harold.jpg" style="object-position:50% 20%"></span><b>trustmebro<em>vouch</em></b><span>Strips the sus mark after a real review. Every use is logged with line and sources.</span></div>
+    <div class="k card lime"><span class="sticker pic r3"><img src="../img/sauce.jpg"></span><b>sauce<em>provenance</em></b><span><code>sauce x</code> lists where a value came from: fetch URLs, frens, model calls, the human.</span></div>
+
+    <div class="group">people, frens and brains</div>
+    <div class="k card sky"><span class="sticker pic r-3"><img src="../img/apu.jpg"></span><b>apu<em>ask a human</em></b><span>Apu Apustaja, the helper, asks. <code>apu "ship it?"</code> blocks for a trusted answer.</span></div>
+    <div class="k card sky"><span class="sticker pic r3"><img src="../img/fren.jpg" style="object-position:50% 40%"></span><b>fren / wagmi</b><span><code>fren scout "task"</code> delegates to another agent. <code>wagmi { }</code> runs several in parallel; all must make it.</span></div>
+    <div class="k card sky"><span class="sticker pic r-3"><img src="../img/brain.jpg" style="object-position:50% 10%"></span><b>thonk / bigbrain</b><span><code>thonk</code> asks the model. <code>smoothbrain</code>, <code>bigbrain</code>, <code>galaxybrain</code> set the effort for a block.</span></div>
+    <div class="k card sky"><span class="sticker pic r3"><img src="../img/kek.jpg" style="object-position:40% 50%"></span><b>kek<em>comment</em></b><span>Everything after <code>kek</code> is a comment. Laughing at your own code is allowed.</span></div>
+  </div>
+</div></body></html>

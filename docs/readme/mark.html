@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>memesis mark</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 512px; height: 512px; }
+  .page { width: 512px; height: 512px; background-image: none; }
+  .frame { position: absolute; inset: 22px; border: 6px solid var(--ink); border-radius: 44px; background: var(--paper);
+    background-image: radial-gradient(rgba(20,19,17,.12) 1.2px, transparent 1.4px); background-size: 14px 14px; }
+  .brace { position: absolute; top: 50%; transform: translateY(-54%); font-size: 300px; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: var(--ink); }
+  .brace.l { left: 14px; } .brace.r { right: 14px; }
+  .face { position: absolute; left: 50%; top: 50%; width: 196px; height: 196px; transform: translate(-50%, -50%) rotate(-5deg); }
+  .face img { width: 196px; height: 196px; border-radius: 26px; }
+  .lime { position: absolute; left: 50%; top: 50%; width: 214px; height: 214px; transform: translate(-50%, -50%) rotate(7deg);
+    background: var(--lime); border: 3px solid var(--ink); border-radius: 32px; }
+</style></head>
+<body><div class="page">
+  <div class="frame">
+    <div class="brace l">{</div>
+    <div class="brace r">}</div>
+    <div class="lime"></div>
+    <span class="sticker face"><img src="../img/smug.jpg" alt=""></span>
+  </div>
+</div></body></html>

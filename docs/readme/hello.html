@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>hello.meme</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1280px; height: 700px; }
+  .page { width: 1280px; height: 700px; }
+  .editor { position: absolute; left: 44px; top: 56px; width: 700px; }
+  .termwin { position: absolute; left: 790px; top: 118px; width: 446px; }
+  .label { position: absolute; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; color: var(--ink-2); letter-spacing: .06em; text-transform: uppercase; }
+  .peek { left: 600px; top: 520px; width: 190px; }
+  .peek img { width: 190px; height: 150px; object-position: 0% 50%; }
+  .doge { left: 1140px; top: 20px; width: 116px; }
+  .doge img { width: 116px; height: 86px; object-position: 80% 40%; }
+</style></head>
+<body><div class="page">
+  <div class="label" style="left:48px; top:28px">examples/hello.meme</div>
+  <div class="win editor">
+    <div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>hello.meme</span></div>
+<pre class="meme">pepe greeter(name) "say hello, count a bit, show how failure feels" {
+  such who = name copium "fren"
+  wow "hello {who}"
+
+  such memes = ["pepe", "apu", "doge"]
+  grind m in memes {
+    tfw m == "apu" { nah }               kek skip apu, he is busy
+    wow "such {m}, round {it}"
+  }
+
+  chad {
+    such n = num("not a number")         kek this fails
+  } virgin {
+    wow "caught {L.kind}: {L.message}"
+  } F {
+    wow "F in the chat"
+  }
+
+  such answer = 20 + 22
+  based answer == 42, "math still works"
+  stonks "greetings"
+  feelsgood "feels good man"
+}</pre>
+  </div>
+  <span class="sticker peek r6"><img src="../img/feelsgood.png" alt=""></span>
+
+  <div class="label" style="left:794px; top:90px">memesis run examples/hello.meme --arg name=fren</div>
+  <div class="win dark termwin">
+    <div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>terminal</span></div>
+<pre class="term"><span class="t-cmd">$ memesis run examples/hello.meme --arg name=fren</span>
+hello fren
+such pepe, round 0
+such doge, round 2
+caught tool: num failed: ValueError: could not
+convert string to float: 'not a number'
+F in the chat
+<span class="t-ok">feelsgood: feels good man</span>
+<span class="t-dim">stonks: greetings=1</span>
+
+<span class="t-cmd">$ memesis check examples/hello.meme</span>
+1 pepe(s), 0 npc(s), 0 irreversible call(s),
+0 human question(s), 0 trustmebro site(s)
+<span class="t-ok">0 error(s), 0 warning(s)</span></pre>
+  </div>
+  <span class="sticker doge r-6"><img src="../img/doge.jpg" alt=""></span>
+<script src="hl.js"></script>
+</div></body></html>
