@@ -1,0 +1,12 @@
+Githubtoken.txt
+MainGithub.txt
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+build/
+dist/
+*.egg-info/
+notes/
+_backups/
+docs/readme/*.html.bak
