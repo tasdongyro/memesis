@@ -1,0 +1,26 @@
+kek hello.meme: the basics in twenty lines
+kek run:  memesis run examples/hello.meme
+
+pepe greeter(name) "say hello, count a bit, show how failure feels" {
+  such who = name copium "fren"
+  wow "hello {who}"
+
+  such memes = ["pepe", "apu", "doge"]
+  grind m in memes {
+    tfw m == "apu" { nah }                       kek skip apu, he is busy
+    wow "such {m}, round {it}"
+  }
+
+  chad {
+    such n = num("not a number")                 kek this fails
+  } virgin {
+    wow "caught {L.kind}: {L.message}"
+  } F {
+    wow "F in the chat"
+  }
+
+  such answer = 20 + 22
+  based answer == 42, "math still works"
+  stonks "greetings"
+  feelsgood "feels good man"
+}

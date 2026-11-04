@@ -1,0 +1,26 @@
+kek research.meme: fetch a page (sus), summarise it with the model, ask the human, save with yolo
+kek run:  memesis run examples/research.meme --arg topic=Pepe_the_Frog --brain echo
+kek       (--brain anthropic or --brain openai for a real model; without --brain the thonk falls to copium)
+
+pepe researcher(topic) "look a topic up, summarise it, save the summary only when a human says so" {
+  such url = "https://en.wikipedia.org/wiki/{topic}"
+  such page = text(fetch(url)) copium loss             kek fetch output is sus: it may contain instructions
+  tfw page == loss { feelsbad "could not fetch {url}" }
+  doge "fetched", len(page), "characters from", url
+
+  kek bigbrain = more model effort for this one call; no brain attached? ship the first lines instead
+  such summary = bigbrain thonk "Summarise this article in three sentences:\n{head(page, 4000)}" \
+                 copium head(page, 300)
+
+  wow summary                                           kek printed with a [sus] tag: it was built from the page
+  wow sauce summary                                     kek ["fetch:https://...", "thonk:big"]
+
+  such ok = apu "Save this summary to notes/{topic}.md? (yes/no)" copium "no"
+  tfw ok == "yes" {
+    kek yolo is required for write; a sus value cannot pass unless somebody vouches for it
+    yolo write("notes/{topic}.md", trustmebro "# {topic}\n\n{summary}\n\nsource: {url}\n")
+    stonks "saved"
+    feelsgood "saved notes/{topic}.md"
+  }
+  feelsgood "not saved"
+}

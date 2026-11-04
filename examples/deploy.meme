@@ -1,0 +1,41 @@
+kek deploy.meme: retries with touchgrass, a scripted npc, yolo on shell, F for cleanup
+kek run:  memesis run examples/deploy.meme --confirm        (asks before every yolo)
+kek       memesis check examples/deploy.meme               (shows the irreversible calls first)
+
+npc healthy(url) {
+  kek a scripted check: no model, no judgement, same steps every time
+  such body = fetch(url) copium ""
+  feelsgood contains(body, "Example Domain")
+}
+
+pepe deployer(target) "build, ship, verify; roll back if the health check stays cringe" {
+  such target = target copium "staging"
+  such shipped = cringe
+
+  chad {
+    such build = yolo shell("echo building {target} && echo ok")
+    based build.code == 0, "build failed: {build.err}"
+
+    yolo shell("echo deploying {target}")
+    shipped = based
+    stonks "deploys"
+
+    kek poll the health check, at most 5 rounds, one second apart
+    such up = cringe
+    grind until up max 5 {
+      up = healthy("https://example.com/?check={target}")
+      tfw not up { touchgrass 1s }
+    }
+    based up, "health check never came back ok"
+    feelsgood "deployed {target}"
+  } virgin {
+    doge "deploy failed:", L.message
+    tfw shipped {
+      yolo shell("echo rolling back {target}")
+      stonks "rollbacks"
+    }
+    feelsbad "deploy of {target} failed: {L.message}"
+  } F {
+    thisisfine { yolo shell("echo cleanup {target}") }
+  }
+}

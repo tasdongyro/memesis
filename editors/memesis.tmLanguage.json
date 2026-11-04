@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Memesis",
+  "scopeName": "source.memesis",
+  "fileTypes": ["meme"],
+  "patterns": [
+    { "name": "comment.line.kek.memesis", "match": "\\b(kek)\\b.*$" },
+    { "name": "comment.line.number-sign.memesis", "match": "#.*$" },
+    {
+      "name": "string.quoted.double.memesis",
+      "begin": "\"", "end": "\"",
+      "patterns": [
+        { "name": "constant.character.escape.memesis", "match": "\\\\." },
+        { "name": "meta.interpolation.memesis", "begin": "\\{", "end": "\\}", "patterns": [ { "include": "#expr" } ] }
+      ]
+    },
+    { "include": "#expr" }
+  ],
+  "repository": {
+    "expr": {
+      "patterns": [
+        { "name": "keyword.declaration.memesis", "match": "\\b(pepe|npc)\\b" },
+        { "name": "keyword.control.memesis", "match": "\\b(tfw|pikachu|grind|in|until|max|forever|bonk|nah|chad|virgin|F|thisisfine|feelsgood|feelsbad)\\b" },
+        { "name": "keyword.other.trust.memesis", "match": "\\b(sus|sauce|trustmebro|yolo)\\b" },
+        { "name": "keyword.other.people.memesis", "match": "\\b(apu|fren|wagmi|thonk|smoothbrain|bigbrain|galaxybrain)\\b" },
+        { "name": "storage.type.memesis", "match": "\\b(such|wow|doge|based|stonks|touchgrass|copium)\\b" },
+        { "name": "constant.language.memesis", "match": "\\b(cringe|loss)\\b" },
+        { "name": "keyword.operator.logical.memesis", "match": "\\b(and|or|not)\\b" },
+        { "name": "constant.numeric.memesis", "match": "\\b\\d+(\\.\\d+)?(ms|s|m|h)?\\b" },
+        { "name": "support.function.builtin.memesis", "match": "\\b(fetch|fetch_json|read|exists|write|append|delete|shell|http_post|len|lower|upper|trim|split|join|contains|starts|ends|replace|slice|lines|find|matches|text|head|str|num|type|round|min|max|sum|range|first|last|push|sort|reverse|uniq|keys|values|has|pluck|where|json_parse|json_dump|sha256|uuid|now|epoch|urlencode|env)(?=\\()" },
+        { "name": "entity.name.function.memesis", "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\()" },
+        { "name": "keyword.operator.memesis", "match": "==|!=|<=|>=|[-+*/%<>=]" }
+      ]
+    }
+  }
+}

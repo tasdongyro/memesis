@@ -1,0 +1,31 @@
+kek swarm.meme: frens and wagmi. Three pepes in one file; the lead delegates and waits for all.
+kek run:  memesis run examples/swarm.meme --pepe lead --arg topic=frogs --brain echo
+
+pepe lead(topic) "fan out to two scouts, merge what comes back, keep the sources" {
+  such found = wagmi {
+    web:   fren web_scout topic,
+    local: fren notes_scout topic,
+    vibe:  fren critic "{topic} is a good topic" copium "no opinion"
+  }
+  doge "web:", found.web, "| local:", found.local, "| critic:", found.vibe
+
+  such report = "# {topic}\n\nweb: {found.web}\nnotes: {found.local}\ncritic: {found.vibe}\n"
+  wow report                                    kek sus, because the web scout's part is sus
+  wow sauce report                              kek fren:web_scout, fetch:https://..., fren:notes_scout ...
+  feelsgood report
+}
+
+pepe web_scout(topic) "fetch one page and hand back the first words" {
+  such page = text(fetch("https://en.wikipedia.org/wiki/{topic}")) copium "nothing found"
+  feelsgood head(page, 120)
+}
+
+pepe notes_scout(topic) "look into local notes, if any" {
+  such path = "notes/{topic}.md"
+  tfw exists(path) { feelsgood head(read(path), 120) }
+  feelsgood "no local notes for {topic}"
+}
+
+pepe critic(claim) "a smoothbrain opinion is enough here" {
+  feelsgood smoothbrain thonk "Answer with one word, agree or disagree: {claim}"
+}
