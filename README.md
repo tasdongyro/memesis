@@ -1,4 +1,4 @@
-<img src="docs/readme/mark.png" alt="memesis" width="150" align="right">
+<img src="docs/readme/mark.gif" alt="memesis: pepe, doge and among us in curly braces" width="170" align="right">
 
 # memesis
 
@@ -31,6 +31,8 @@ memesis prompt                                             # the language on one
 A `.meme` file is a list of statements, one per line, with `{ }` blocks. A `pepe` is an agent and the entry point.
 `such` declares, `wow` emits a result, `grind` loops with a hard cap, `chad / virgin / F` handles failure, `based`
 asserts, `feelsgood` returns. Comments start with `kek`.
+
+<img src="docs/readme/run.gif" alt="memesis run examples/hello.meme, line by line, with the meme for each line" width="100%">
 
 ## Why a meme language
 
@@ -71,6 +73,10 @@ to sit right after a real check: a human said yes through `apu`, a schema valida
 With `--confirm` the runtime asks before each yolo; from Python you attach your own gate with `on_yolo`.
 
 <br clear="all">
+
+<img src="docs/readme/trust.gif" alt="examples/sus.meme: a fetched page is refused by yolo write, memesis check finds it, trustmebro after apu fixes it" width="100%">
+
+The script above is [`examples/sus.meme`](examples/sus.meme); both terminal outputs are the real ones.
 
 ## Failure is a feeling
 
@@ -205,10 +211,10 @@ memesis/
   brains.py         anthropic_brain, openai_compatible_brain, echo_brain
   check.py          static checks           explain.py   plain-English rendering
   prompt.py         the one-page guide      cli.py       memesis run / check / explain / prompt / tools
-examples/           hello.meme, research.meme, deploy.meme, swarm.meme
+examples/           hello.meme, research.meme, deploy.meme, swarm.meme, sus.meme
 tests/              pytest, 34 tests, no network (fetch is stubbed where used)
 editors/            memesis.tmLanguage.json for VS Code / any TextMate editor
-docs/readme/        the HTML sources of the images above; tools/readme_assets.py renders them
+docs/readme/        the HTML sources of the images and GIFs above; tools/readme_assets.py and readme_anim.py render them
 docs/img/           the memes, credited in docs/img/ATTRIBUTION.md
 ```
 
@@ -218,6 +224,7 @@ docs/img/           the memes, credited in docs/img/ATTRIBUTION.md
 pip install -e ".[dev]"
 python -m pytest -q                          # PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 if your global plugins misbehave
 python tools/readme_assets.py                # re-render the README images (Playwright + installed Chrome)
+python tools/readme_anim.py                  # re-render the animated GIFs (logo, run, trust)
 ```
 
 ## Honest notes
