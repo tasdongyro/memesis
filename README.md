@@ -237,6 +237,12 @@ python tools/readme_anim.py                  # re-render the animated GIFs (logo
   gets back; it does not run an agent loop for you. Your harness does, and it reads `result`.
 - This is version 0.1: no module system, no user-defined types, Python only. Keywords may still change.
 
+## Built with Claude Code
+
+Memesis was built with [Claude Code](https://claude.com/claude-code). The idea and the keyword mapping are
+mine; Claude Code wrote the lexer, parser, interpreter, the sus/yolo taint tracking and `memesis check`, the CLI,
+the 34 tests and the animated README images (HTML pages rendered frame by frame with Playwright).
+
 ## Credits and license
 
 MIT, see [`LICENSE`](LICENSE). The memes are the well-known originals, credited in
