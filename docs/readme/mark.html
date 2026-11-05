@@ -5,19 +5,52 @@
   html, body { width: 512px; height: 512px; }
   .page { width: 512px; height: 512px; background-image: none; }
   .frame { position: absolute; inset: 22px; border: 6px solid var(--ink); border-radius: 44px; background: var(--paper);
-    background-image: radial-gradient(rgba(20,19,17,.12) 1.2px, transparent 1.4px); background-size: 14px 14px; }
-  .brace { position: absolute; top: 50%; transform: translateY(-54%); font-size: 300px; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; color: var(--ink); }
-  .brace.l { left: 14px; } .brace.r { right: 14px; }
-  .face { position: absolute; left: 50%; top: 50%; width: 196px; height: 196px; transform: translate(-50%, -50%) rotate(-5deg); }
-  .face img { width: 196px; height: 196px; border-radius: 26px; }
-  .lime { position: absolute; left: 50%; top: 50%; width: 214px; height: 214px; transform: translate(-50%, -50%) rotate(7deg);
-    background: var(--lime); border: 3px solid var(--ink); border-radius: 32px; }
+    background-image: radial-gradient(rgba(20,19,17,.12) 1.2px, transparent 1.4px); background-size: 14px 14px; overflow: hidden; }
+  .brace { position: absolute; top: 50%; transform: translateY(-54%); font-size: 250px; font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400; color: var(--ink); }
+  .brace.l { left: -4px; } .brace.r { right: -4px; }
+  .lime { position: absolute; left: 50%; top: 50%; width: 196px; height: 196px; margin: -98px 0 0 -98px; transform: translateY(14px) rotate(8deg);
+    background: var(--lime); border: 3px solid var(--ink); border-radius: 30px; }
+  .card { position: absolute; left: 50%; top: 50%; width: 140px; height: 140px; margin: -70px 0 0 -70px; }
+  .card img { width: 140px; height: 140px; object-fit: cover; border: 6px solid #fff; outline: 3px solid var(--ink);
+    border-radius: 22px; box-shadow: 7px 7px 0 var(--ink); background: #fff; display: block; }
+  .card img.px { image-rendering: pixelated; object-fit: contain; background: #2ee6d6; }
 </style></head>
 <body><div class="page">
   <div class="frame">
     <div class="brace l">{</div>
     <div class="brace r">}</div>
     <div class="lime"></div>
-    <span class="sticker face"><img src="../img/smug.jpg" alt=""></span>
+    <span class="card" id="c0"><img src="../img/doge.jpg" alt="" style="object-position: 38% 50%"></span>
+    <span class="card" id="c1"><img class="px" src="../img/amongus.png" alt=""></span>
+    <span class="card" id="c2"><img src="../img/smug.jpg" alt=""></span>
   </div>
-</div></body></html>
+</div>
+<script>
+// three slots: back-left, back-right, front. frame(t) shuffles the cards (front goes back-left) every 1.2 s.
+const SLOTS = [
+  { x: -104, y: 22, r: -14, s: .9, z: 2 },
+  { x: 106, y: 24, r: 12, s: .9, z: 3 },
+  { x: 0, y: -10, r: -4, s: 1.04, z: 4 },
+];
+const cards = [0, 1, 2].map(i => document.getElementById('c' + i));
+const ease = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+function place(el, a, b, u) {
+  const k = ease(u), m = (p) => a[p] + (b[p] - a[p]) * k;
+  const lift = Math.sin(Math.PI * k) * (b.z > a.z ? -26 : 18);
+  el.style.transform = `translate(${m('x')}px, ${m('y') + lift}px) rotate(${m('r')}deg) scale(${m('s')})`;
+  el.style.zIndex = (u < .5 ? a.z : b.z);
+}
+window.frame = function (t) {          // t in seconds; loop = 3.6 s
+  const HOLD = .8, MOVE = .4, STEP = HOLD + MOVE;
+  const n = Math.floor(t / STEP), p = t - n * STEP;
+  const u = p < HOLD ? 0 : (p - HOLD) / MOVE;
+  cards.forEach((el, i) => {
+    const from = (i + n) % 3, to = (i + n + 1) % 3;
+    place(el, SLOTS[from], SLOTS[to], u);
+  });
+};
+window.LOOP = 3.6;
+window.frame(0);
+</script>
+</body></html>
