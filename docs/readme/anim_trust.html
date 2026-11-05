@@ -1,0 +1,102 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>memesis trust</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1100px; height: 560px; }
+  .page { width: 1100px; height: 560px; }
+  .ed { position: absolute; left: 30px; top: 30px; width: 618px; }
+  .ed pre.meme { font-size: 12.6px; line-height: 1.6; padding: 12px 14px 12px 0; }
+  .no { color: #b3ada2; display: inline-block; width: 28px; }
+  .ln { display: block; padding-left: 12px; border-left: 4px solid transparent; }
+  .ln.hot { background: #fff4c2; border-left-color: #ffd23f; }
+  .ln.bad { background: #ffe1d4; border-left-color: var(--orange); }
+  .ln.good { background: #eeffc4; border-left-color: #8cc21a; }
+  .tm { position: absolute; left: 676px; top: 30px; width: 396px; height: 364px; }
+  pre.term { font-size: 12.3px; line-height: 1.55; white-space: pre; padding: 12px 14px; }
+  .cursor { display: inline-block; width: 8px; height: 14px; background: var(--lime); vertical-align: -2px; }
+  .stamp { position: absolute; left: 738px; top: 200px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -.02em;
+    color: var(--orange); border: 6px solid var(--orange); border-radius: 12px; padding: 2px 16px 6px; background: rgba(243,239,230,.94); }
+  .ok { position: absolute; left: 676px; top: 418px; width: 396px; padding: 12px 14px; font-size: 13.5px; line-height: 1.45; }
+  .ok b { font-family: 'IBM Plex Mono', monospace; }
+  .sus { position: absolute; left: 46px; top: 420px; }
+  .sus img { width: 96px; height: 88px; image-rendering: pixelated; object-fit: contain; background: #2ee6d6; border: 5px solid #fff;
+    outline: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); display: block; }
+  .tag.sus-t { position: absolute; left: 168px; top: 432px; background: #ffd23f; font-size: 12px; }
+  .tag.yl-t { position: absolute; left: 168px; top: 470px; background: var(--orange); color: #fff; font-size: 12px; }
+  .yl { position: absolute; left: 470px; top: 410px; }
+  .yl img { width: 150px; height: 98px; object-fit: cover; border: 5px solid #fff; outline: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); display: block; }
+</style></head>
+<body><div class="page">
+  <div class="win ed"><div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>examples/sus.meme</span></div>
+<pre class="meme" id="code"></pre></div>
+  <div class="win dark tm"><div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>~/memesis</span></div>
+    <pre class="term" id="term"></pre></div>
+  <span class="sus" id="sus"><img src="../img/amongus.png" alt=""></span>
+  <span class="tag sus-t" id="sustag">line 5: page is sus (sauce: fetch)</span>
+  <span class="tag yl-t" id="yltag">line 6: sus into yolo = refused</span>
+  <div class="stamp" id="stamp">REFUSED</div>
+  <div class="card ok" id="ok"><b>memesis check</b> finds it without running anything. The fix is lines 8 to 11: a human says yes through <b>apu</b>, the value is vouched for with <b>trustmebro</b>, the write stays a visible <b>yolo</b>.</div>
+  <span class="yl" id="yl"><img src="../img/yolo.jpg" alt=""></span>
+</div>
+<script src="hl.js"></script>
+<script>
+const SRC = [
+"kek sus.meme: a web page tries to reach an irreversible tool",
+"kek check: memesis check examples/sus.meme",
+"",
+"pepe saver(url) \"save a page: the wrong way, then the right way\" {",
+"  such page = fetch(url)",
+"  yolo write(\"notes.txt\", page)          kek refused: page is sus",
+"",
+"  such ok = apu \"Save {url}?\" copium \"no\"",
+"  tfw ok == \"yes\" {",
+"    such safe = trustmebro page          kek a human said yes",
+"    yolo write(\"notes.txt\", safe)",
+"  }",
+"}"
+];
+const HL = SRC.map(l => window.memesisLine(l));
+// real outputs of: memesis run examples/sus.meme --arg url=https://example.com --no-human, and memesis check examples/sus.meme
+// (only wrapped to fit the window)
+const NL = String.fromCharCode(10), BS = String.fromCharCode(92);
+const STEPS = [
+  { at: 1.4, cmd: '$ memesis run examples/sus.meme ' + BS + NL + '    --arg url=https://example.com --no-human' },
+  { at: 2.9, out: '<span class="t-err">' + ['feelsbad: sus: a sus value (from', 'fetch:https://example.com) reached write;', 'review it and wrap it in trustmebro (line 6)'].join(NL) + '</span>' },
+  { at: 4.6, cmd: '$ memesis check examples/sus.meme' },
+  { at: 5.7, out: '<span class="t-sus">' + ['warn  line   6  a sus value flows into write;', '  the runtime will refuse it unless you', '  trustmebro it'].join(NL) + '</span>' + NL + NL +
+                  '<span class="t-dim">' + ['1 pepe(s), 0 npc(s), 2 irreversible call(s),', '1 human question(s), 1 trustmebro site(s)'].join(NL) + '</span>' + NL + '0 error(s), 1 warning(s)' },
+];
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const $ = id => document.getElementById(id);
+const pop = (el, t0, t, rot) => {
+  if (t < t0) { el.style.opacity = 0; return; }
+  const u = Math.min(1, (t - t0) / 0.25);
+  el.style.opacity = 1;
+  el.style.transform = `scale(${u < 1 ? 1.6 - 0.6 * u : 1}) rotate(${rot}deg)`;
+};
+window.frame = function (t) {
+  // editor: line 5 lights up as sus, line 6 goes bad, the fix (lines 8-11) goes good
+  const cls = i => (i === 4 && t >= 0.4) ? 'hot' : (i === 5 && t >= 2.9) ? 'bad' : (i >= 7 && i <= 10 && t >= 6.4) ? 'good' : '';
+  $('code').innerHTML = HL.map((h, i) => `<span class="ln ${cls(i)}"><span class="no">${String(i + 1).padStart(2)}</span>${h || ' '}</span>`).join('');
+  let html = '';
+  for (const s of STEPS) {
+    if (t < s.at) break;
+    if (s.cmd) {
+      const n = Math.min(s.cmd.length, Math.floor((t - s.at) / 0.9 * s.cmd.length));
+      html += (html ? NL + NL : '') + '<span class="t-cmd">' + esc(s.cmd.slice(0, n)) + '</span>';
+    } else html += NL + s.out;
+  }
+  if (Math.floor(t * 2.5) % 2 === 0) html += '<span class="cursor"></span>';
+  $('term').innerHTML = html;
+  pop($('sus'), 0.4, t, -6);
+  pop($('sustag'), 0.6, t, -2);
+  pop($('yltag'), 2.9, t, 2);
+  pop($('stamp'), 3.0, t, -9);
+  $('stamp').style.opacity = (t >= 3.0 && t < 4.5) ? 1 : 0;
+  pop($('ok'), 6.4, t, 0);
+  pop($('yl'), 6.9, t, 6);
+};
+window.LOOP = 10.5;
+window.frame(9);
+</script>
+</body></html>

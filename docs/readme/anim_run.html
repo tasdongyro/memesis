@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>memesis run</title>
+<link rel="stylesheet" href="readme.css">
+<style>
+  html, body { width: 1000px; height: 520px; }
+  .page { width: 1000px; height: 520px; padding: 34px 40px; }
+  .win.dark { position: absolute; left: 40px; top: 34px; width: 640px; height: 440px; }
+  pre.term { font-size: 15px; line-height: 1.65; padding: 18px 20px; }
+  .cursor { display: inline-block; width: 9px; height: 17px; background: var(--lime); vertical-align: -3px; margin-left: 1px; }
+  .side { position: absolute; left: 722px; top: 40px; width: 240px; }
+  .side .display { font-size: 34px; }
+  .side p { font-size: 14px; line-height: 1.45; color: var(--ink-2); margin-top: 10px; }
+  .pop { position: absolute; transform-origin: 50% 60%; }
+  .pop img { width: 190px; height: 118px; object-fit: cover; border: 5px solid #fff; outline: 2px solid var(--ink);
+    box-shadow: 7px 7px 0 var(--ink); background: #fff; display: block; }
+  .pop .cap { position: absolute; left: -6px; bottom: -16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;
+    background: var(--lime); border: 2px solid var(--ink); border-radius: 6px; padding: 2px 8px; white-space: nowrap; }
+</style></head>
+<body><div class="page">
+  <div class="win dark"><div class="bar"><i class="a"></i><i class="b"></i><i class="c"></i><span>~/memesis</span></div>
+    <pre class="term" id="term"></pre></div>
+  <div class="side">
+    <div class="display">every line<br>is a meme</div>
+    <p>hello.meme: <b>such</b>, <b>grind</b>, <b>chad / virgin / F</b>, <b>based</b>, <b>stonks</b>, <b>feelsgood</b>. A real run, output unedited.</p>
+  </div>
+  <span class="pop" id="p0" style="left:745px; top:200px"><img src="../img/fren.jpg" alt=""><span class="cap">wow "hello {who}"</span></span>
+  <span class="pop" id="p1" style="left:770px; top:220px"><img src="../img/pikachu.jpg" alt=""><span class="cap">virgin { L }</span></span>
+  <span class="pop" id="p2" style="left:740px; top:240px"><img src="../img/pressf.jpg" alt=""><span class="cap">F { }</span></span>
+  <span class="pop" id="p3" style="left:760px; top:260px"><img src="../img/feelsgood.png" alt=""><span class="cap">feelsgood</span></span>
+</div>
+<script>
+const CMD = '$ memesis run examples/hello.meme --arg name=fren';
+// real output of that command (stdout lines, then the stderr summary)
+const OUT = [
+  ['hello fren', ''],
+  ['such pepe, round 0', ''],
+  ['such doge, round 2', 't-dim'],
+  ["caught tool: num failed: ValueError: could not\n  convert string to float: 'not a number'", 't-err'],
+  ['F in the chat', ''],
+  ['feelsgood: feels good man', 't-ok'],
+  ['stonks: greetings=1', 't-dim'],
+];
+const POPS = { 0: 'p0', 3: 'p1', 4: 'p2', 5: 'p3' };   // output line -> sticker
+const TYPE_END = 1.6, LINE0 = 2.0, GAP = 0.75;
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const term = document.getElementById('term');
+window.frame = function (t) {
+  const chars = Math.min(CMD.length, Math.floor(Math.max(0, t - 0.2) / (TYPE_END - 0.2) * CMD.length));
+  let html = '<span class="t-cmd">' + esc(CMD.slice(0, chars)) + '</span>';
+  const shown = t < LINE0 ? 0 : Math.min(OUT.length, 1 + Math.floor((t - LINE0) / GAP));
+  for (let i = 0; i < shown; i++) html += '\n' + (OUT[i][1] ? `<span class="${OUT[i][1]}">${esc(OUT[i][0])}</span>` : esc(OUT[i][0]));
+  if (shown === OUT.length) html += '\n<span class="t-cmd">$ </span>';
+  const blink = Math.floor(t * 2.5) % 2 === 0 || (chars < CMD.length && t > 0.2);
+  if (blink) html += '<span class="cursor"></span>';
+  term.innerHTML = html;
+  // the sticker of the newest matching line pops in and stays until the next one
+  let cur = null;
+  for (let i = 0; i < shown; i++) if (POPS[i]) cur = { id: POPS[i], at: LINE0 + i * GAP };
+  ['p0', 'p1', 'p2', 'p3'].forEach((id, k) => {
+    const el = document.getElementById(id);
+    if (!cur || cur.id !== id) { el.style.opacity = 0; return; }
+    const u = Math.min(1, (t - cur.at) / 0.28);
+    const s = u < 1 ? 0.4 + 0.75 * u - 0.15 * Math.sin(Math.PI * u) : 1;
+    el.style.opacity = 1;
+    el.style.transform = `scale(${u < 1 ? 0.4 + 0.8 * Math.sin(u * Math.PI / 2) * (1 + 0.15 * Math.sin(u * Math.PI)) : 1}) rotate(${[-5, 4, -3, 5][k]}deg)`;
+  });
+};
+window.LOOP = LINE0 + OUT.length * GAP + 2.2;
+window.frame(window.LOOP - 0.01);
+</script>
+<script src="hl.js"></script>
+</body></html>
