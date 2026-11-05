@@ -29,6 +29,7 @@
     if (cmt) out += '<span class="c-cmt">' + esc(cmt) + '</span>';
     return out;
   }
+  window.memesisLine = line;
   document.querySelectorAll('pre.meme').forEach(pre => {
     pre.innerHTML = pre.textContent.split('\n').map(line).join('\n');
   });
