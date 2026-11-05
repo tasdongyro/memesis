@@ -11,7 +11,7 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 tok = (ROOT / "Githubtoken.txt").read_text(encoding="utf-8").strip()
 H = {"Authorization": "Bearer " + tok, "Accept": "application/vnd.github+json"}
-SLUG = "eneserdo/memesis"
+SLUG = "tasdongyro/memesis"
 public = "--public" in sys.argv
 
 r = requests.get(f"https://api.github.com/repos/{SLUG}", headers=H, timeout=20)

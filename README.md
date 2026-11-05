@@ -17,7 +17,7 @@ the memes already knows the language.
 <br clear="all">
 
 ```sh
-pip install git+https://github.com/eneserdo/memesis        # or: git clone + pip install -e .
+pip install git+https://github.com/tasdongyro/memesis        # or: git clone + pip install -e .
 memesis run examples/hello.meme --arg name=fren
 memesis check examples/research.meme                       # static checks, no execution
 memesis explain examples/research.meme                     # the script in plain English

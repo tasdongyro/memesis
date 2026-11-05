@@ -15,7 +15,7 @@ from pathlib import Path
 from urllib.parse import quote, urlencode as _urlencode
 from urllib.request import Request, urlopen
 
-USER_AGENT = "memesis/0.1 (+https://github.com/eneserdo/memesis)"
+USER_AGENT = "memesis/0.1 (+https://github.com/tasdongyro/memesis)"
 
 
 def install(rt) -> None:

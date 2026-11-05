@@ -27,7 +27,7 @@ dev = ["pytest>=8"]
 memesis = "memesis.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/eneserdo/memesis"
+Homepage = "https://github.com/tasdongyro/memesis"
 
 [tool.setuptools]
 packages = ["memesis"]
