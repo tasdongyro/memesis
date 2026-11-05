@@ -1,0 +1,13 @@
+kek sus.meme: a web page tries to reach an irreversible tool
+kek check: memesis check examples/sus.meme
+
+pepe saver(url) "save a page: the wrong way, then the right way" {
+  such page = fetch(url)
+  yolo write("notes.txt", page)          kek refused: page is sus
+
+  such ok = apu "Save {url}?" copium "no"
+  tfw ok == "yes" {
+    such safe = trustmebro page          kek a human said yes
+    yolo write("notes.txt", safe)
+  }
+}
